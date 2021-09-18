@@ -1,8 +1,12 @@
 node_modules/
+/node_modules
 .env
+.gitignore
 
 #caches
 .cache
+
+/build
 
 #vs editor
 .vscode-test
