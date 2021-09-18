@@ -55,12 +55,6 @@ connection.connect(err => {
                 console.log("AccVerification table created successfully");
             }
         });
-        connection.query('delete from account_verification;', (err) => {
-
-        })
-        connection.query('delete from "user"', (err) => {
-            
-        })
     }
 });
 
