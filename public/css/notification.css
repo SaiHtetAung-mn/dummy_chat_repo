@@ -1,0 +1,17 @@
+.noti-wrapper {
+    width: 100%;
+    display: block;
+    margin: auto;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    z-index: 200;
+    background: rgb(220, 200, 200);
+    display: none;
+    animation-duration: .5s;
+}
+
+.noti-text {
+    color: var(--error-color);
+    text-align: center;
+}

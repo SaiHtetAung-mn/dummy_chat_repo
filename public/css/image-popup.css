@@ -1,0 +1,50 @@
+.image-popup-container {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 110;
+    top: 0;
+    left: 0;
+    backdrop-filter: blur(2px) brightness(.5);
+    animation-name: fade-in;
+    animation-duration: .2s;
+    animation-timing-function: ease-in;
+}
+
+.image-popup-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-popup-img {
+    width: 95%;
+    height: auto;
+    max-height: 90%;
+    
+}
+
+.popup-image-close {
+    align-self: center;
+    padding: 5px;
+    border-radius: 100%;
+    background-color: var(--error-color);
+    color: white;
+    cursor: pointer;
+}
+
+.popup-image-close:active {
+    opacity: .5;
+}
+
+@media (min-width: 500px) {
+    .image-popup-img {
+        width: 40%;
+        height: auto;
+    }
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="/public/LineAwesome/css/line-awesome.min.css"/>
+        <link rel="stylesheet" href="/public/css/chat.css"/>
+        <link rel="stylesheet" href="/public/css/chat-list.css"/>
+        <link rel="stylesheet" href="/public/css/conversation.css"/>
+        <link rel="stylesheet" href="/public/css/friends.css"/>
+        <link rel="stylesheet" href="/public/css/animation.css"/>
+        <link rel="stylesheet" href="/public/css/modal.css"/>
+        <link rel="stylesheet" href="/public/css/image-popup.css"/>
+        <link rel="stylesheet" href="/public/css/profile.css"/>
+        <link rel="stylesheet" href="/public/css/notification.css"/>
+        <script src="/socket.io/socket.io.js"></script>
+    </head>
+    <body>
+        <%- include("popup/notification.ejs"); %>
+        <%- include("popup/modal.ejs"); %>
+        <%- include("popup/image-popup.ejs"); %>
+        <ul class="chat-list-menu" id="chat-list-menu">
+            <li id="mobile-logout">Logout</li>
+        </ul>
+        <div class="chat-wrapper">
+            <%- include("nav.ejs"); %>
+            <div class="main" id="menu-tab-container">
+                <%- include("chat.ejs"); %>
+                <%- include("profile.ejs"); %>
+                <%- include("friends.ejs"); %>
+            </div>
+        </div>
+        <script>
+            // make user info global
+            window.user = JSON.parse('<%- JSON.stringify(user) %>');
+        </script>
+        <script src="/public/js/moment.js"></script>
+        <script type="module" src="/public/controller/index.controller.js"></script>
+        <script type="module" src="/public/controller/profile.controller.js"></script>
+        <script type="module" src="/public/controller/friends.controller.js"></script>
+        <script type="module" src="/public/controller/chat.controller.js"></script>
+        <script type="module" src="/public/model/socket.js"></script>
+    </body>
+</html>

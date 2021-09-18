@@ -1,0 +1,102 @@
+<div class="profile menu-tab-content" id="profile">
+    <div class="profile-wrapper">
+        <div class="profile-avatar">
+            <img 
+                src="<%= user.profilePath %>" 
+                class="profile-avatar-img"
+                id="profile-avatar-img"
+            />
+            <div>
+                <h3 class="profile-avatar-name" id="profile-avatar-name">
+                    <%= user.name %>
+                </h3>
+                <p class="profile-avatar-email" id="profile-avatar-email">
+                    <%= user.email %>
+                </p>
+            </div>
+            <div class="profile-properties">
+                <div class="profile-property-gp">
+                    <h5 class="profile-property-count" id="friends-count">0</h5>
+                    <p class="profile-property">friends</p>
+                </div>
+            </div>
+        </div>
+        <div class="profile-info">
+            <h4 class="profile-title">Personal information</h4>
+            <div class="profile-form">
+                <div class="profile-form-gp">
+                    <label>Name</label>
+                    <input 
+                        type="text" 
+                        placeholder="Enter your name"
+                        value="<%= user.name %>"
+                        id="profile-name"
+                    />
+                </div>
+                <div class="profile-form-gp">
+                    <label>Email</label>
+                    <input 
+                        type="text" 
+                        placeholder="Enter your email address"
+                        value="<%= user.email %>"
+                        id="profile-email"
+                    />
+                </div>
+                <div class="profile-form-gp">
+                    <label>Profile picture</label>
+                    <input type="file" id="profile-img"/>
+                </div>
+                <div id="profile-personal-status">
+                    <div class="profile-status">
+                        <img 
+                            src="/public/images/assets/loading.gif" 
+                            class="loading"
+                            id="personal-loading"
+                        />
+                        <p id="profile-personal-help-text">Updating personal information</p>
+                    </div>
+                </div>
+                <div class="profile-form-btn-gp">
+                    <button class="profile-form-btn" id="profile-personal-save-btn">Save</button>
+                </div>
+            </div>
+            <h4 class="profile-title">Security</h4>
+            <div class="profile-form">
+                <div class="profile-form-gp">
+                    <label>Old password</label>
+                    <input 
+                        type="password" 
+                        placeholder="Enter old password"
+                        id="profile-old-password"
+                    />
+                </div>
+                <div class="profile-form-gp">
+                    <label>New password</label>
+                    <input 
+                        type="password" 
+                        placeholder="Enter new password"
+                        id="profile-new-password"
+                    />
+                </div>
+                <div id="profile-password-status">
+                    <div class="profile-status">
+                        <img 
+                            src="/public/images/assets/loading.gif" 
+                            class="loading" 
+                            id="password-loading"
+                        />
+                        <p id="profile-password-help-text">Reseting new password</p>
+                    </div>
+                </div>
+                <div class="profile-form-btn-gp">
+                    <button 
+                        class="profile-form-btn" 
+                        id="profile-password-change-btn"
+                    >
+                        Change password
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

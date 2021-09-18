@@ -1,0 +1,99 @@
+<div class="menu-tab-content" id="chat">
+    <div class="chat-container">
+        <div class="chat-list-wrapper">
+            <div class="chat-list-header">
+                <div class="chat-list-title-gp">
+                    <h2 class="chat-list-title">Chats</h2>
+                    <i class="la la-ellipsis-v chat-list-header-icon" id="chat-list-menu-btn"></i>
+                </div>
+                <div class="chat-list-search">
+                    <input 
+                        type="text" 
+                        placeholder="Search..." 
+                        class="chat-list-search-box"
+                        id="chat-list-search"
+                    />
+                    <i class="la la-search chat-list-search-icon"></i>
+                </div>
+            </div>
+            <div class="chat-list-body" id="chat-list-container">
+                <!-- <div class="chat-list-item active-chat-item">
+                    <div class="chat-list-avatar">
+                        <img src="/public/images/Vijay.jpeg" class="chat-list-avatar-img"/>
+                        <div class="chat-list-avatar-content">
+                            <p class="chat-list-avatar-name">Vijay Zayar</p>
+                            <p class="chat-list-avatar-text">Hello bro, What are you doing</p>
+                        </div>
+                    </div>
+                    <span class="chat-list-time">02:38 pm</span>
+                </div> -->
+            </div>
+            <!-- initially hidden. Active when chat list search box change event occur -->
+        </div>
+        <div class="conversation-container" id="conversation-container">
+            <p class="no-conversation">No conversations</p>
+            <div class="conversation-wrapper" id="conversation-wrapper">
+                <div class="conversation-header">
+                    <div class="conversation-avatar">
+                        <i class="la la-angle-left conv-back-icon" id="conversation-back-btn"></i>
+                        <img 
+                            src="public/images/profile_images/user.png" 
+                            class="conv-header-img" 
+                            id="conv-avatar-img"
+                        />
+                        <div class="conv-header-avatar-content">
+                            <p class="conv-header-avatar-name" id="conv-avatar-name"></p>
+                            <p class="conv-active-status" id="conv-avatar-status"></p>
+                        </div>
+                    </div>
+                    <div class="conv-widget">
+                        <i title="Currently not available"  class="la la-video conv-widget-icon"></i>
+                        <i title="Currently not available" class="la la-phone conv-widget-icon"></i>
+                        <i title="Currently not available" class="la la-ellipsis-v conv-widget-icon"></i>
+                    </div>
+                </div>
+                <div class="conversation-body" id="conversation-body">
+                    <!-- <p class="conversation-date">27/06/2022</p>
+                    <div class="message-wrapper send-message-wrapper">
+                        <div class="message-container">
+                            <p class="message send-message">Hello, how are you?</p>
+                            <span class="message-time">03:48 pm</span>
+                        </div>
+                    </div>
+                    <div class="message-wrapper rec-message-wrapper">
+                        <img src="../public/images/Vijay.jpeg" class="message-avatar"/>
+                        <div class="message-container">
+                            <p class="message rec-message">
+                                Hi. I'm fine. Long time no see, bro. How are you doing.
+                            </p>
+                            <span class="message-time">03:48 pm</span>
+                        </div>
+                    </div>
+                    <div class="message-wrapper send-message-wrapper">
+                        <div class="message-container">
+                            <img src="../public/images/Vijay.jpeg" class="send-message img-message"/>
+                            <span class="message-time">03:48 pm</span>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="conversation-footer">
+                    <div class="message-box-gp">
+                        <!--hidden input for file message attach -->
+                        <input type="file" id="media-message-input" style="display: none;"/>
+                        <!-- <i class="la la-paperclip message-box-icon"></i> -->
+                        <i class="la la-image message-box-icon" id="media-message-btn"></i>
+                        <input 
+                            type="text" 
+                            class="message-box" 
+                            placeholder="Type here..."
+                            id="text-message-input"
+                        />
+                    </div>
+                    <button class="message-send-btn" id="text-message-send-btn">
+                        <i class="la la-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

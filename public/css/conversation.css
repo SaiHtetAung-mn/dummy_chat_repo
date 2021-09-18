@@ -1,0 +1,255 @@
+.conversation-container {
+    display: none;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    position: fixed;
+    z-index: 90;
+    top: 0;
+    left: 0;
+    animation-name: fade-in;
+    animation-duration: .1s;
+    animation-timing-function: ease;
+}
+.conversation-wrapper {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.no-conversation {
+    display: none;
+    color: grey;
+    opacity: .6;
+    text-align: center;
+    padding: 30px 0;
+}
+
+.conversation-header {
+    padding: 10px 20px;
+    box-shadow: 1px 0 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.conversation-avatar {
+    width: 60%;
+    max-width: 60%;
+    overflow: hidden;
+    display: flex;
+    gap: 10px;
+}
+
+.conv-header-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+}
+
+.conv-header-avatar-content {
+    width: max-content;
+    max-width: max-content;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.conv-header-avatar-name {
+    font-weight: 500;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.conv-active-status {
+    font-size: 70%;
+    color: grey;
+}
+
+.conv-back-icon {
+    align-self: center;
+    font-size: 130%;
+    cursor: pointer;
+}
+
+.conv-back-icon:active {
+    opacity: .7;
+}
+
+.conv-widget {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.conv-widget-icon {
+    font-size: 130%;
+    cursor: pointer;
+    color: var(--primary-color);
+}
+
+.conv-widget-icon:active {
+    opacity: .7;
+}
+
+.conversation-body {
+    flex-grow: 100;
+    padding: 10px 20px;
+    height: max-content;
+    max-height: max-content;
+    overflow: auto;
+}
+
+.conversation-date {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 90%;
+    font-weight: 500;
+}
+
+.message-wrapper {
+    width: 100%;
+    padding: 10px 0;
+    display: flex;
+    gap: 10px;
+}
+
+.send-message-wrapper {
+    justify-content: flex-end;
+}
+
+.rec-message-wrapper {
+    justify-content: flex-start;
+}
+
+.message-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    max-width: 80%;
+}
+
+.message-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+}
+
+.message {
+    padding: 5px 10px;
+    border-radius: 2px;
+}
+
+.send-message {
+    background: var(--primary-color);
+    color: white;
+    align-self: flex-end;
+}
+
+.img-message {
+    max-width: 80%;
+    height: auto;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.rec-message {
+    background: rgba(0, 0 , 0, 0.1);
+    align-self: baseline;
+}
+
+.message-time {
+    text-align: right;
+    color: grey;
+    font-weight: 500;
+    font-size: 80%;
+}
+
+.rec-message + .message-time {
+    text-align: left;
+}
+
+.conversation-footer {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.message-box-gp {
+    width: 90%;
+    display: flex;
+    gap: 10px;
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.message-box {
+    flex-grow: 100;
+    outline: none;
+    border: none;
+    padding: 0 10px;
+    background-color: transparent;
+}
+
+.message-box-icon {
+    font-size: 130%;
+    color: grey;
+    cursor: pointer;
+}
+
+.message-box-icon:hover {
+    color: black;
+}
+
+.message-send-btn {
+    padding: 10px;
+    outline: none;
+    border: none;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 120%;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.message-box-icon:active, .message-send-btn:active {
+    opacity: .7;
+}
+
+@media(min-width: 500px) {
+    .conversation-container {
+        display: block;
+        position: static;
+    }
+
+    .conversation-avatar {
+        width: 70%;
+        max-width: 70%;
+    }
+
+    .message-box-gp {
+        width: 70%;
+    }
+
+    .conv-back-icon {
+        display: none;
+    }
+
+    .message-container {
+        max-width: 40%;
+    }
+}

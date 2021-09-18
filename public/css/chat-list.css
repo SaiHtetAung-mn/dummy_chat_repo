@@ -1,0 +1,151 @@
+.chat-list-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-height: 100%;
+    overflow: auto;
+    padding-bottom: 20px;
+}
+
+.chat-list-header {
+    padding: 10px;
+}
+
+.chat-list-title-gp {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.chat-list-title {
+    font-weight: 500;
+}
+
+.chat-list-search {
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 30px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.chat-list-search-box {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    flex-grow: 100;
+}
+
+.chat-list-header-icon {
+    font-size: 150%;
+}
+
+.chat-list-search-icon {
+    font-size: 120%;
+    color: grey;
+}
+
+.chat-list-body {
+    height: max-content;
+    overflow: auto;
+    flex-grow: 100;
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.chat-list-search-text {
+    color: grey;
+    opacity: .9;
+}
+
+.chat-list-item {
+    width: 100%;
+    padding: 10px 5px;
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    background-color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+    animation-name: fade-in;
+    animation-duration: .3s;
+    animation-timing-function: ease-in;
+}
+
+.no-chat-list {
+    color: grey;
+    opacity: .6;
+    justify-content: center;
+    text-align: center;
+}
+
+.chat-list-item:active {
+    opacity: .7;
+}
+
+.active-chat-item {
+    background: white;
+}
+
+.chat-list-avatar {
+    display: flex;
+    gap: 10px;
+    width: 70%;
+}
+
+.chat-list-avatar-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+}
+
+.chat-list-avatar-content {
+    flex-grow: 100;
+    max-width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+}
+
+.chat-list-avatar-text {
+    font-size: 80%;
+    font-weight: 500;
+    color: grey;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.chat-list-time {
+    font-size: 70%;
+    font-weight: 500;
+    color: grey;
+}
+
+@media(min-width: 500px) {
+    .chat-list-wrapper {
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .chat-list-header-icon {
+        display: none;
+    }
+
+    .chat-list-search {
+        padding: 10px 20px;
+    }
+
+    .active-chat-item {
+        background: var(--primary-color);
+    } 
+    
+    .active-chat-item .chat-list-avatar-name {
+        color: white;
+    }
+}

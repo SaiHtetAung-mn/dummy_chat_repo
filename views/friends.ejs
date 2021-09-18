@@ -1,0 +1,30 @@
+<div class="friends-wrapper menu-tab-content" id="friends">
+    <div class="friends-list-wrapper">
+        <h2 class="friends-list-title">Friends</h2>
+        <div class="friends-search">
+            <input 
+                type="text" 
+                class="friends-search-box" 
+                placeholder="Search friends ..."
+                id="friends-search"
+            />
+            <i class="la la-search friends-search-icon"></i>
+        </div>
+        <div class="friends-tab-wrapper">
+            <p class="friends-tab">
+                My friends
+                <span class="tab-count" id="friends-tab-count">0</span>
+            </p>
+            <!-- <span class="friends-tab-splitter">|</span> -->
+            <p class="friends-tab">
+                Requests
+                <span class="tab-count" id="requests-tab-count">0</span>
+            </p>
+        </div>
+        <div class="friends-tab-content-wrapper">
+            <%- include("my-friends.ejs"); %>
+            <%- include("friends-request.ejs"); %>
+            <%- include("friends-search.ejs"); %>
+        </div>
+    </div>
+</div>
