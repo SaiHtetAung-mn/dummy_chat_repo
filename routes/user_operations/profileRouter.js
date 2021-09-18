@@ -7,48 +7,77 @@ let multerConfig = require(`${global.appRootPath}/models/MulterConfig`);
 let profileRouter = express.Router();
 
 profileRouter.post("/change_personal_info", 
+    async (req, res, next) => {
+        let newData = {};
+        // if(req.file !== undefined) {
+        //     let path = "/public"+req.file.destination.split("public")[1]+req.file.filename;
+        //     newData.profilePath = path;
+        // }
+        // else {
+        //     throw new Error('Multer error');
+        // }
+        newData.name = req.body.name === undefined ? null : req.body.name;
+        newData.email = req.body.email === undefined ? null : req.body.email;
+        if(req.body['profile_pic'] === undefined) {
+            try {
+                let isUpdated = await User.updateUser(
+                    req.user.userId,
+                    newData.name, 
+                    newData.email, 
+                    null,
+                    newData.profilePath,
+                    null
+                );
+                if(isUpdated) {
+                    res.json({isError: false, error_text: null, newData: newData});
+                    return;
+                }
+            }
+            catch(err) {
+                console.log(err);
+                res.json({isError: true, error_text: 'Error updating profile information'});
+            }
+        }
+        else {
+            req.newData = newData;
+            next();
+        }  
+    },
     (req, res, next) => {
         multerConfig.profileImgUpload.single('profile_pic')(req, res, err => {
             if(err) {
                 res.json({isError: true, error_text: err.message});
                 return;
             }
-            next();
+            else {
+                if(req.file !== undefined) {
+                    let path = "/public"+req.file.destination.split("public")[1]+req.file.filename;
+                    req.newData.profilePath = path;
+                    try {
+                        let isUpdated = await User.updateUser(
+                            req.user.userId,
+                            newData.name, 
+                            newData.email, 
+                            null,
+                            newData.profilePath ?? null,
+                            null
+                        );
+                        if(isUpdated) {
+                            res.json({isError: false, error_text: null, newData: newData});
+                            return;
+                        }
+                    }
+                    catch(err) {
+                        res.json({isError: true, error_text: 'Error image upload'});
+                        return;
+                    }
+                }
+                else {
+                    res.json({isError: true, error_text: 'Error image upload'});
+                }
+            }
         });
     }, 
-    async (req, res, next) => {
-        let newData = {};
-        if(req.file !== undefined) {
-            let path = "/public"+req.file.destination.split("public")[1]+req.file.filename;
-            newData.profilePath = path;
-        }
-        else {
-            throw new Error('Multer error');
-        }
-        newData.name = req.body.name === undefined ? null : req.body.name;
-        newData.email = req.body.email === undefined ? null : req.body.email;
-        console.log(newData);
-
-        try {
-            let isUpdated = await User.updateUser(
-                req.user.userId,
-                newData.name, 
-                newData.email, 
-                null,
-                newData.profilePath,
-                null
-            );
-            if(isUpdated) {
-                res.json({isError: false, error_text: null, newData: newData});
-                return;
-            }
-        }
-        catch(err) {
-            console.log(err);
-            res.json({isError: true, error_text: 'Error updating profile information'});
-        }
-        
-    }
 )
 
 profileRouter.post("/change_password", async (req, res, next) => {
