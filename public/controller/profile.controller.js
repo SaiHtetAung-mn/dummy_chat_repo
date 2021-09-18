@@ -41,14 +41,17 @@ profile_personal_save_btn.addEventListener("click", async () => {
     let data = new FormData();
     if(name !== window.user.name) {
         data.append('name', name);
+        console.log("Name change");
     }
 
     if(email !== window.user.email) {
         data.append('email', email);
+        console.log('email change')
     }
 
     if(profile_pic !== undefined) {
         data.append('profile_pic', profile_pic);
+        console.log('Pic change');
     }
 
     let options = {
@@ -64,6 +67,7 @@ profile_personal_save_btn.addEventListener("click", async () => {
         else {
             // upload success
             let newData = res.newData ?? {};
+            console.log(newData);
             if("name" in newData) {
                 profile_avatar_name.innerText = newData.name;
                 profile_name.innerText = newData.name;
