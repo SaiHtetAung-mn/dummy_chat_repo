@@ -68,7 +68,7 @@ signupRouter.post('/', async (req, res, next) => {
             let newVerifyId = await AccountVerify.createVerification(newUserId, longHash);
             let mailHtml = `<p>Click below link to verify your account<br>
                 <a 
-                href="http://192.168.43.99:3000/auth/verify/${longHash}"
+                href="https://chatdummy.herokuapp.com/auth/verify/${longHash}"
                 >Click here</a></p>`;
             let mailSend = await Mailer.sendMail(email, 'Account verification',null, mailHtml);
             console.log(mailSend.response);
