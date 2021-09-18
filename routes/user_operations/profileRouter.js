@@ -27,6 +27,7 @@ profileRouter.post("/change_personal_info",
         }
         newData.name = req.body.name === undefined ? null : req.body.name;
         newData.email = req.body.email === undefined ? null : req.body.email;
+        console.log(newData);
 
         try {
             let isUpdated = await User.updateUser(
