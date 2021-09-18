@@ -44,7 +44,7 @@ profileRouter.post("/change_personal_info",
         }  
     },
     async function(req, res, next) {
-        multerConfig.profileImgUpload.single('profile_pic')(req, res, err => {
+        multerConfig.profileImgUpload.single('profile_pic')(req, res, async (err) => {
             if(err) {
                 res.json({isError: true, error_text: err.message});
                 return;
