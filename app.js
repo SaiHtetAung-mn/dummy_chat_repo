@@ -54,6 +54,6 @@ app.all("*", (req, res, next) => {
 
 const server = http.createServer(app);
 Socket.config(server);
-server.listen(process.env.SERVER_PORT, () => {
-    console.log(`Server running on ${HOSTNAME}:${PORT}`);
+server.listen(PORT, () => {
+    console.log(`Server running on ${HOSTNAME}`);
 });
