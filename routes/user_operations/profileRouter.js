@@ -25,7 +25,7 @@ profileRouter.post("/change_personal_info",
                     newData.name, 
                     newData.email, 
                     null,
-                    newData.profilePath,
+                    newData.profilePath ?? null,
                     null
                 );
                 if(isUpdated) {
