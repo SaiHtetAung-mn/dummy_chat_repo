@@ -40,15 +40,15 @@ profile_personal_save_btn.addEventListener("click", async () => {
     let url = `${requestURL}/change_personal_info`;
     let data = new FormData();
     if(name !== window.user.name) {
-        data.append('name', name);
+        data.append("name", name);
     }
 
     if(email !== window.user.email) {
-        data.append('email', email);
+        data.append("email", email);
     }
 
     if(profile_pic !== undefined) {
-        data.append('profile_pic', profile_pic);
+        data.append("profile_pic", profile_pic);
     }
 
     let options = {
@@ -68,14 +68,17 @@ profile_personal_save_btn.addEventListener("click", async () => {
             if("name" in newData) {
                 profile_avatar_name.innerText = newData.name;
                 profile_name.innerText = newData.name;
+                window.user.name = newData.name;
             }
             if("email" in newData) {
                 profile_avatar_email.innerText = newData.email;  
                 profile_email.innerText = newData.email;
+                window.user.email = newData.email;
             }
             if("profilePath" in newData) {
                 profile_avatar_img.src = newData.profilePath;
                 nav_avatar_img.src = newData.profilePath;
+                window.user.profilePath = newData.profilePath;
             }
 
             // hide status text

@@ -3,10 +3,6 @@ let maxSize = (5*1024*1024); // 5MB
 
 let multerProfileImgStorage = multer.diskStorage({
     destination: (req, file, cb) => {
-        if(file === undefined || req.file === undefined) {
-            cb(new Error('No file', null));
-            return;
-        }
         cb(null, global.appRootPath+"/public/images/profile_images");
     },
     filename: (req, file, cb) => {
@@ -26,9 +22,6 @@ let multerSendMediaStorage = multer.diskStorage({
 })
 
 let multerProfileImgFilter = (req, file, cb) => {
-    if(req.file === undefined || file === undefined) {
-        return cb(new Error('No file', false));
-    }
     let img_ext = ["png", "jpg", "jpeg"];
     let ext = file.mimetype.split("/")[1];
     if(img_ext.indexOf(ext) === -1) {
