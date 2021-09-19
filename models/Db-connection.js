@@ -19,48 +19,18 @@ connection.connect(err => {
     else {
         console.log('Connected to database successfully');
         // create table if not exists
-        connection.query(getUserSchemaQuery(), (err) => {
+        connection.query(`${getUserSchemaQuery()};
+            ${getMessageSchemaQuery()};
+            ${getFriendShipSchemaQuery()};
+            ${getAccVerifySchemaQuery()};`, (err) => {
             if(err) {
+                console.log("Database tables not created");
                 console.log(err.message);
-                console.log("User table not created");
             }
             else {
-                console.log("User table created successfully");
+                console.log("Database tables created successfully");
             }
         });
-        connection.query(getMessageSchemaQuery(), (err) => {
-            if(err) {
-                console.log(err.message);
-                console.log("Message table not created");
-            }
-            else {
-                console.log("Message table created successfully");
-            }
-        });
-        connection.query(getFriendShipSchemaQuery(), (err) => {
-            if(err) {
-                console.log(err.message);
-                console.log("Friendship table not created");
-            }
-            else {
-                console.log("Friendship table created successfully");
-            }
-        });
-        connection.query(getAccVerifySchemaQuery(), (err) => {
-            if(err) {
-                console.log(err.message);
-                console.log("AccVerification table not created");
-            }
-            else {
-                console.log("AccVerification table created successfully");
-            }
-        });
-        connection.query(`delete from "account_verification";delete from "message";
-            delete from "friendship";delete from "user"`, err => {
-                if(err) {
-                    console.log(err.message);
-                }
-            })
     }
 });
 
