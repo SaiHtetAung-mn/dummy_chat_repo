@@ -18,6 +18,8 @@ signupRouter.post('/', async (req, res, next) => {
     let password = req.body.password ?? '';
     let c_password = req.body.c_password ?? '';
 
+    console.log(email);
+
     // check if user fill all fields
     if(name === '' || email === '' || password === '') {
         res.json({isError: true, error_text: 'All information are required'});

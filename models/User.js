@@ -11,6 +11,7 @@ const COL_IS_ACTIVE = 'isActive';
 exports.props = {TABLE_USER, COL_ID, COL_NAME, COL_EMAIL, COL_PROFILE_PATH, COL_IS_ACTIVE};
 
 exports.findByEmail = (email) => {
+    console.log('db:'+email);
     email = escape(email);
     return new Promise((resolve, reject) => {
         let query = `select * from "${TABLE_USER}" where "${COL_EMAIL}"='${email}'`;
