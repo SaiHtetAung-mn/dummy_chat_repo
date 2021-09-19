@@ -22,7 +22,7 @@ let multerSendMediaStorage = multer.diskStorage({
 })
 
 let multerProfileImgFilter = (req, file, cb) => {
-    let img_ext = ["png", "jpg", "jpeg"];
+    let img_ext = ["png", "jpg", "jpeg", "gif"];
     let ext = file.mimetype.split("/")[1];
     if(img_ext.indexOf(ext) === -1) {
         cb(new Error('Error! Invalid image file', false));
