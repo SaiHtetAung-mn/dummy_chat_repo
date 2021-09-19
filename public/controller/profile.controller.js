@@ -65,12 +65,12 @@ profile_personal_save_btn.addEventListener("click", async () => {
             // upload success
             let newData = res.newData ?? {};
             console.log(newData);
-            if("name" in newData) {
+            if(newData.name) {
                 profile_avatar_name.innerText = newData.name;
                 profile_name.innerText = newData.name;
                 window.user.name = newData.name;
             }
-            if("email" in newData) {
+            if(newData.email) {
                 profile_avatar_email.innerText = newData.email;  
                 profile_email.innerText = newData.email;
                 window.user.email = newData.email;
