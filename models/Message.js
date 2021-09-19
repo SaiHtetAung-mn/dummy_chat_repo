@@ -13,9 +13,6 @@ const COL_TIMESTAMP = 'timestamp';
 exports.props = {COL_ID, COL_SENDER, COL_RECEIVER, COL_TYPE, COL_MESSAGE, COL_TIMESTAMP};
 
 exports.createMessage = (sender, receiver, message) => {
-    sender = escape(sender);
-    receiver = escape(receiver);
-    message = escape(message);
     return new Promise((resolve, reject) => {
         let id = Date.now();
         let type = message.type === "image" ? TYPE[1] : TYPE[0];
@@ -35,7 +32,6 @@ exports.createMessage = (sender, receiver, message) => {
 }
 
 exports.findChatList = (userId) => {
-    userId = escape(userId);
     return new Promise((resolve, reject) => {
         //find every message chatted with user descendent order
 
@@ -67,8 +63,6 @@ exports.findChatList = (userId) => {
 }
 
 exports.findMessages = (userId, friendId) => {
-    userId = escape(userId);
-    friendId = escape(friendId);
     return new Promise((resolve, reject) => {
     let query = `select * from "${TABLE_MESSAGE}" where ("${COL_SENDER}"='${userId}' and 
         "${COL_RECEIVER}"='${friendId}') or ("${COL_SENDER}"='${friendId}' and 

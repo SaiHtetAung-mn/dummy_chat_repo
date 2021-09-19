@@ -11,7 +11,6 @@ const COL_IS_ACTIVE = 'isActive';
 exports.props = {TABLE_USER, COL_ID, COL_NAME, COL_EMAIL, COL_PROFILE_PATH, COL_IS_ACTIVE};
 
 exports.findByEmail = (email) => {
-    console.log('db:'+email);
     return new Promise((resolve, reject) => {
         let query = `select * from "${TABLE_USER}" where "${COL_EMAIL}"='${email}'`;
         console.log(query);
@@ -27,7 +26,6 @@ exports.findByEmail = (email) => {
 }
 
 exports.findById = (id) => {
-    id = escape(id);
     return new Promise((resolve, reject) => {
         let query = `select * from "${TABLE_USER}" where "${COL_ID}"='${id}'`;
         db_connection.query(query, (err, result) => {
@@ -42,7 +40,6 @@ exports.findById = (id) => {
 }
 
 exports.findByRegexName = (name) => {
-    name = escape(name);
     return new Promise((resolve, reject) => {
         let query = `select "${COL_ID}", "${COL_NAME}", "${COL_PROFILE_PATH}" from "${TABLE_USER}" 
             where LOWER(${COL_NAME}) LIKE '%${name}%'`;
@@ -76,9 +73,6 @@ exports.findByIdList = (list = []) => {
 }
 
 exports.createUser = (name, email, password) => {
-    name = escape(name);
-    email = escape(email);
-    password = escape(password);
     return new Promise((resolve, reject) => {
         let id = (new Date()).getTime();
         let query = `insert into "${TABLE_USER}" ("${COL_ID}", "${COL_NAME}", "${COL_EMAIL}", 
@@ -100,10 +94,10 @@ console.log(escape(null));
 
 exports.updateUser = (id, name, email, password, profilePath, isActive) => {
     return new Promise((resolve, reject) => {
-        let q_name = name == null ? '' : `"${COL_NAME}" = '${escape(name)}',`;
-        let q_email = email == null ? '' : `"${COL_EMAIL}" = '${escape(email)}',`;
+        let q_name = name == null ? '' : `"${COL_NAME}" = '${name}',`;
+        let q_email = email == null ? '' : `"${COL_EMAIL}" = '${email}',`;
         let q_password = password == null ? '' : `"${COL_PASSWORD}" = '${password}',`;
-        let q_profilePath = profilePath == null ? '' : `"${COL_PROFILE_PATH}" = '${escape(profilePath)}',`;
+        let q_profilePath = profilePath == null ? '' : `"${COL_PROFILE_PATH}" = '${profilePath}',`;
         let q_isActive = isActive == null ? '' : `"${COL_IS_ACTIVE}"=true,`;
         
         let query = `update "${TABLE_USER}" set ${q_name} ${q_email} ${q_password} 

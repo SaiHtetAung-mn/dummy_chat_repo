@@ -9,7 +9,6 @@ const COL_ACCEPTER = 'accepter';
 const COL_STATUS = 'status';
 
 exports.findById = (id) => {
-    id = escape(id);
     return new Promise ((resolve, reject) => {
         let query = `select * from "${TABLE_FRIENDSHIP}" where "${COL_REQUESTER}"='${id}' or 
             "${COL_ACCEPTER}"='${id}'`;
@@ -25,7 +24,6 @@ exports.findById = (id) => {
 }
 
 exports.findMyFriends = (id) => {
-    id = escape(id);
     return new Promise((resolve, reject) => {
         let query = `select U."${UserProps.COL_ID}", U."${UserProps.COL_NAME}", 
             U."${UserProps.COL_PROFILE_PATH}" from "${UserProps.TABLE_USER}" U, 
@@ -45,7 +43,6 @@ exports.findMyFriends = (id) => {
 }
 
 exports.findFriendsRequest = (id) => {
-    id = escape(id);
     return new Promise((resolve, reject) => {
         let query = `select U."${UserProps.COL_ID}", U."${UserProps.COL_NAME}", 
             U."${UserProps.COL_PROFILE_PATH}" from "${UserProps.TABLE_USER}" U, 
@@ -65,8 +62,6 @@ exports.findFriendsRequest = (id) => {
 }
 
 exports.requestFriendship = (requester, accepter) => {
-    requester = escape(requester);
-    accepter = escape(accepter);
     return new Promise((resolve, reject) => {
         let id = String(Date.now());
         let query = `insert into "${TABLE_FRIENDSHIP}" 
@@ -84,8 +79,6 @@ exports.requestFriendship = (requester, accepter) => {
 }
 
 exports.deleteFriendship = (userId, friendId) => {
-    userId = escape(userId);
-    friendId = escape(friendId);
     return new Promise((resolve, reject) => {
         let query = `delete from "${TABLE_FRIENDSHIP}" where 
             ("${COL_REQUESTER}"='${userId}' and "${COL_ACCEPTER}"='${friendId}') or 
@@ -102,8 +95,6 @@ exports.deleteFriendship = (userId, friendId) => {
 }
 
 exports.acceptFriendship = (userId, friendId) => {
-    userId = escape(userId);
-    friendId = escape(friendId);
     return new Promise((resolve, reject) => {
         let query = `update "${TABLE_FRIENDSHIP}" set "${COL_STATUS}"=true where 
             "${COL_REQUESTER}"='${friendId}' and "${COL_ACCEPTER}"='${userId}'`;
