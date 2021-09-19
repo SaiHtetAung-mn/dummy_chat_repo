@@ -13,7 +13,6 @@ exports.props = {TABLE_USER, COL_ID, COL_NAME, COL_EMAIL, COL_PROFILE_PATH, COL_
 exports.findByEmail = (email) => {
     return new Promise((resolve, reject) => {
         let query = `select * from "${TABLE_USER}" where "${COL_EMAIL}"='${email}'`;
-        console.log(query);
         db_connection.query(query, (err, result) => {
             if(err) {
                 reject(err);
@@ -77,7 +76,6 @@ exports.createUser = (name, email, password) => {
         let id = (new Date()).getTime();
         let query = `insert into "${TABLE_USER}" ("${COL_ID}", "${COL_NAME}", "${COL_EMAIL}", 
             "${COL_PASSWORD}") values('${id}', '${name}', '${email}', '${password}')`;
-            console.log(query);
         
         db_connection.query(query, (err) => {
             if(err) {
@@ -89,8 +87,6 @@ exports.createUser = (name, email, password) => {
         });
     })
 }
-
-console.log(escape(null));
 
 exports.updateUser = (id, name, email, password, profilePath, isActive) => {
     return new Promise((resolve, reject) => {
