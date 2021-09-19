@@ -7,6 +7,7 @@ let submit_btn = document.getElementById("login-submit");
 import {createHash} from '../model/crypto.js';
 
 submit_btn.addEventListener("click", async () => {
+    console.log(email.value);
     const url = "/login";
     const formBody = {
         email: email.value,

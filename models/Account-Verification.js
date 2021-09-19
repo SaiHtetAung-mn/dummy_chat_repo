@@ -1,5 +1,7 @@
 const db_connection = require("./Db-connection");
 
+const escape = (require('mysql')).escape;
+
 const TABLE_VERIFICATION = 'account_verification';
 const COL_ID = 'accountId';
 const COL_USER_ID = 'userId';
@@ -8,6 +10,8 @@ const COL_CODE = 'code';
 exports.props = {TABLE_VERIFICATION, COL_ID, COL_USER_ID, COL_CODE};
 
 exports.createVerification = (userId, code) => {
+    userId = escape(userId);
+    code = escape(code);
     return new Promise((resolve, reject) => {
         let newId = Date.now().toString();
         let query = `insert into "${TABLE_VERIFICATION}" ("${COL_ID}", "${COL_USER_ID}", 
@@ -24,6 +28,7 @@ exports.createVerification = (userId, code) => {
 }
 
 exports.findByCode = (code) => {
+    code = escape(code);
     return new Promise((resolve, reject) => {
         let query = `select * from "${TABLE_VERIFICATION}" where "${COL_CODE}"='${code}'`;
         db_connection.query(query, (err, result) => {
@@ -39,6 +44,7 @@ exports.findByCode = (code) => {
 }
 
 exports.deleteById = (id) => {
+    id = escape(id);
     return new Promise((resolve, reject) => {
         let query = `delete from "${TABLE_VERIFICATION}" where "${COL_ID}"='${id}'`;
         db_connection.query(query, (err) => {
