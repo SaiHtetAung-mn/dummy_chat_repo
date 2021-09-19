@@ -61,7 +61,7 @@ profileRouter.post("/change_password", async (req, res, next) => {
     else {
         // Change user password
         try {
-            let hashPassword = Crypto.createHash(newPassword);
+            let hashPassword = Crypto.createHashPassword(newPassword);
             let isUpdated = await User.updateUser(req.user.userId, null, null, hashPassword, null, null);
             if(isUpdated) {
                 res.json({isError: false, error_text: null});
