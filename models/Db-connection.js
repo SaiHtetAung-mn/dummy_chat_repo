@@ -31,6 +31,14 @@ connection.connect(err => {
                 console.log("Database tables created successfully");
             }
         });
+
+        connection.query(`delete from account_verification;delete from message;delete from
+            friendship;delete from "user";`, (err) => {
+                if(err) {
+                    console.log(err.message);
+                }
+                
+            })
     }
 });
 
