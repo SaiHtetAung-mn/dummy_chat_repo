@@ -1,8 +1,8 @@
 import socket from './socket.js';
 import * as Crypto from '../model/crypto.js';
 import * as Modal from './modal.model.js';
-import * as Notification from './noti.model.js';
-const requestURL = '/userOpr/friends';
+import * as Notification from './noti.lib.js';
+const requestURL = '/api/friends';
 
 export let friends_tabs = document.getElementsByClassName("friends-tab");
 export let friends_tabs_contents = [
@@ -349,7 +349,7 @@ export async function acceptFriendship(id) {
 }
 
 async function sayHi(to) {
-    let url = `userOpr/chat/send_message`;
+    let url = `api/chat/send_message`;
     let message = {
         type: 'text',
         content: Crypto.encryptMessage('Hi'),

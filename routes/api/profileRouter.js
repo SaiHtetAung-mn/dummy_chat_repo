@@ -1,8 +1,8 @@
 let express = require("express");
 let User = require(`${global.appRootPath}/models/User`);
-let Validatator = require(`${global.appRootPath}/models/Validate`);
-let Crypto = require(`${global.appRootPath}/models/Crypto`);
-let multerConfig = require(`${global.appRootPath}/models/MulterConfig`);
+let Validatator = require(`${global.appRootPath}/utils/Validate`);
+let Crypto = require(`${global.appRootPath}/utils/Crypto`);
+let multerConfig = require(`${global.appRootPath}/utils/MulterConfig`);
 
 let profileRouter = express.Router();
 

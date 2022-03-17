@@ -1,8 +1,8 @@
 // functions
-import * as profileModel from '../model/profile.model.js';
-import * as Crypto from '../model/crypto.js';
+import * as profile from '../lib/profile.lib.js';
+import * as Crypto from '../lib/crypto.js';
 
-const requestURL = '/userOpr/profile';
+const requestURL = '/api/profile';
 
 // navbar avatar img to change if profile info change
 let nav_avatar_img = document.getElementById("nav-avatar-img");
@@ -35,7 +35,7 @@ profile_personal_save_btn.addEventListener("click", async () => {
     }
 
     // show loading status
-    profileModel.showPersonalLoading();
+    profile.showPersonalLoading();
 
     let url = `${requestURL}/change_personal_info`;
     let data = new FormData();
@@ -59,7 +59,7 @@ profile_personal_save_btn.addEventListener("click", async () => {
     try {
         let res = await (await fetch(url, options)).json();
         if(res.isError) {
-            profileModel.showPersonalStatusText(res.error_text);
+            profile.showPersonalStatusText(res.error_text);
         }
         else {
             // upload success
@@ -82,19 +82,19 @@ profile_personal_save_btn.addEventListener("click", async () => {
             }
 
             // hide status text
-            profileModel.hidePersonalStatus;
+            profile.hidePersonalStatus;
         }
     }
     catch(err) {
         console.log(err);
-        profileModel.showPersonalStatusText("Server error updating personal information");
+        profile.showPersonalStatusText("Server error updating personal information");
     }
     
 });
 
 profile_password_change_btn.addEventListener("click", async () => {
     // show loading status
-    profileModel.showPasswordStatusText("Reseting new password");
+    profile.showPasswordStatusText("Reseting new password");
     let old_password = Crypto.createHash(profile_old_password.value);
     let new_password = profile_new_password.value;
 
@@ -114,15 +114,15 @@ profile_password_change_btn.addEventListener("click", async () => {
     try {
         let res = await (await fetch(url, options)).json();
         if(res.isError) {
-            profileModel.showPasswordStatusText(res.error_text);
+            profile.showPasswordStatusText(res.error_text);
         }
         else {
             // success
-            profileModel.showSuccessPasswordStatusText('Reseted password successfully');
+            profile.showSuccessPasswordStatusText('Reseted password successfully');
         }
     }
     catch(err) {
         console.log(err);
-        profileModel.showPasswordStatusText('Server error reseting password');
+        profile.showPasswordStatusText('Server error reseting password');
     }
 })

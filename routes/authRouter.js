@@ -1,8 +1,8 @@
 let express = require("express");
-let Validator = require("../models/Validate");
-let Crypto = require("../models/Crypto");
+let Validater = require("../utils/Validate");
+let Crypto = require("../utils/Crypto");
 let User = require("../models/User");
-let Mailer = require("../models/Mail");
+let Mailer = require("../utils/Mail");
 let AccountVerify = require('../models/Account-Verification');
 let authRouter = express.Router();
 
@@ -55,8 +55,8 @@ authRouter.post("/reset_password", async (req, res, next) => {
             res.json({isError: true, error_text: 'Password not match'});
             return;
         }
-        if(!Validator.validatePassword(c_new_password)) {
-            res.json({isError: true, error_text: Validator.PASSWORD_ERROR_TEXT});
+        if(!Validater.validatePassword(c_new_password)) {
+            res.json({isError: true, error_text: Validater.PASSWORD_ERROR_TEXT});
             return;
         }
         // all ok

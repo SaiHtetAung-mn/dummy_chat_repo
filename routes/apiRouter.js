@@ -1,9 +1,9 @@
 let express = require("express");
-let Auth = require("../models/Auth");
+let Auth = require("../utils/Auth");
 
-let profileRouter = require('./user_operations/profileRouter');
-let friendsRouter = require('./user_operations/friendsRouter');
-let chatRouter = require("./user_operations/chatRouter");
+let profileRouter = require('./api/profileRouter');
+let friendsRouter = require('./api/friendsRouter');
+let chatRouter = require("./api/chatRouter");
 
 let userOprRouter = express.Router();
 

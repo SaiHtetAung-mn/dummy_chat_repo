@@ -1,8 +1,8 @@
 let express = require("express");
-let Auth = require("../models/Auth");
-let Mailer = require("../models/Mail");
-let Crypto = require('../models/Crypto');
-let Validate = require("../models/Validate");
+let Auth = require("../utils/Auth");
+let Mailer = require("../utils/Mail");
+let Crypto = require('../utils/Crypto');
+let Validate = require("../utils/Validate");
 let User = require("../models/User");
 let AccountVerify = require('../models/Account-Verification');
 

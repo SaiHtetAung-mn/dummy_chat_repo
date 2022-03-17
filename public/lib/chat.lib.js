@@ -1,7 +1,7 @@
 import * as Notification from './noti.model.js';
-import * as PopupImage from './popup-image.model.js';
-import * as Crypto from '../model/crypto.js';
-const reqURL = '/userOpr/chat';
+import * as PopupImage from './popup-image.lib.js';
+import * as Crypto from './crypto.js';
+const reqURL = '/api/chat';
 const chat_list_container = document.getElementById('chat-list-container');
 let conversation_container = document.getElementById('conversation-container');
 let conversation_wrapper = document.getElementById("conversation-wrapper");

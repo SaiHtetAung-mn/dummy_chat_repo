@@ -1,7 +1,7 @@
 process.on('uncaughtException', () => {
-    process.exit(0);
+    process.exit(1);
 });
 
 process.on('unhandledRejection', () => {
-    process.exit(0);
+    process.exit(1);
 })

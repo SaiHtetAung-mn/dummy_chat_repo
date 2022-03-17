@@ -1,8 +1,8 @@
 let express = require("express");
-let multerConfig = require(`${global.appRootPath}/models/MulterConfig`);
+let multerConfig = require(`${global.appRootPath}/utils/MulterConfig`);
 let Message = require(`${global.appRootPath}/models/Message`);
 let User = require(`${global.appRootPath}/models/User`);
-let Socket = require(`${global.appRootPath}/models/Socket`);
+let Socket = require(`${global.appRootPath}/utils/Socket`);
 let chatRouter = express.Router();
 
 chatRouter.post("/send_message", async (req, res, next) => {

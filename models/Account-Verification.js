@@ -1,7 +1,5 @@
 const db_connection = require("./Db-connection");
 
-const escape = (require('mysql')).escape;
-
 const TABLE_VERIFICATION = 'account_verification';
 const COL_ID = 'accountId';
 const COL_USER_ID = 'userId';

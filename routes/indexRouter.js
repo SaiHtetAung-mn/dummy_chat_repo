@@ -1,5 +1,5 @@
 let express = require("express");
-let Auth = require("../models/Auth");
+let Auth = require("../utils/Auth");
 
 let indexRouter = express.Router();
 

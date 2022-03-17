@@ -34,11 +34,8 @@
             // make user info global
             window.user = JSON.parse('<%- JSON.stringify(user) %>');
         </script>
-        <script src="/public/js/moment.js"></script>
-        <script type="module" src="/public/controller/index.controller.js"></script>
-        <script type="module" src="/public/controller/profile.controller.js"></script>
-        <script type="module" src="/public/controller/friends.controller.js"></script>
-        <script type="module" src="/public/controller/chat.controller.js"></script>
-        <script type="module" src="/public/model/socket.js"></script>
+        <script src="/public/lib/moment.js"></script>
+        <script type="module" src="/public/scripts/index.js"></script>
+        <script type="module" src="/public/lib/socket.js"></script>
     </body>
 </html>

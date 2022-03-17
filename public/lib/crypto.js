@@ -1,5 +1,5 @@
-import CryptoMD5 from '../js/crypto/md5.js';
-import CryptoAES from '../js/crypto/aes.js';
+import CryptoMD5 from './crypto/md5.js';
+import CryptoAES from './crypto/aes.js';
 
 const MESSAGE_KEY = "msg-123";
 

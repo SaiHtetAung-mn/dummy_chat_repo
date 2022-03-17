@@ -2,15 +2,15 @@
 global.appRootPath = __dirname;
 
 require('dotenv').config();
-const config = require('./www/config');
+const config = require('./config');
 const http = require('http');
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
-const Socket = require('./models/Socket');
+const Socket = require('./utils/Socket');
 const app = express();
 
-const PORT = process.env['SERVER_PORT'];
+const PORT = process.env['SERVER_PORT'] || 3000;
 const HOSTNAME = process.env['SERVER_HOSTNAME'];
 
 const indexRouter = require("./routes/indexRouter");
@@ -18,7 +18,7 @@ const authRouter = require("./routes/authRouter");
 const loginRouter = require("./routes/loginRouter");
 const logoutRouter = require("./routes/logoutRouter");
 const signupRouter = require("./routes/signupRouter");
-const userOprRouter = require("./routes/userOprRouter");
+const apiRouter = require("./routes/apiRouter");
 
 // view engine
 app.set("view engine", "ejs");
@@ -29,7 +29,7 @@ app.use(cors(
 ));
 
 // cookie parser
-app.use(cookieParser(config.cookie_key));
+app.use(cookieParser(process.env['COOKIE_KEY']));
 
 // url body middlewares
 app.use(express.urlencoded({extended: true}));
@@ -46,7 +46,7 @@ app.use("/auth", authRouter);
 app.use("/login", loginRouter);
 app.use("/logout", logoutRouter);
 app.use("/signup", signupRouter);
-app.use("/userOpr", userOprRouter);
+app.use("/api", apiRouter);
 
 // route exception
 app.all("*", (req, res, next) => {

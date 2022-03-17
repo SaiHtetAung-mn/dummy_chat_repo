@@ -4,7 +4,7 @@ let rm_checked = document.getElementById("remember-me");
 let help_text = document.getElementById("login-help-text");
 let submit_btn = document.getElementById("login-submit");
 
-import {createHash} from '../model/crypto.js';
+import {createHash} from '../lib/crypto.js';
 
 submit_btn.addEventListener("click", async () => {
     console.log(email.value);

@@ -1,8 +1,8 @@
 let express = require("express");
 let jwt = require("jsonwebtoken");
-let config = require("../www/config");
+let config = require("../config");
 let User = require('../models/User');
-let Auth = require("../models/Auth");
+let Auth = require("../utils/Auth");
 
 let loginRouter = express.Router();
 
@@ -31,13 +31,13 @@ loginRouter.route('/')
                 let userId = {userId: user.userId};
                 let token = jwt.sign(
                     userId, 
-                    config.token_key, 
+                    process.env['TOKEN_KEY'], 
                     {expiresIn: config.token_expiresIn}
                 );
 
                 // set cookie
                 res.cookie(
-                    config.auth_cookie_name, 
+                    process.env['AUTH_COOKIE_NAME'], 
                     token,
                     {
                         maxAge: config.cookie_expiresIn,

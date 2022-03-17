@@ -1,6 +1,5 @@
 const db_connection = require("./Db-connection");
 const UserProps = (require("./User")).props;
-const escape = (require('mysql')).escape;
 
 const TABLE_FRIENDSHIP = 'friendship';
 const COL_ID = 'fsId';
@@ -19,7 +18,7 @@ exports.findById = (id) => {
             else {
                 resolve(result.rows);
             }
-        })
+        });
     })
 }
 

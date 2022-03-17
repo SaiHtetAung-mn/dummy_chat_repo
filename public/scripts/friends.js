@@ -1,6 +1,6 @@
-import * as modal from '../model/friends.model.js';
-import * as Notification from '../model/noti.model.js';
-const requestURL = '/userOpr/friends';
+import * as friend from '../lib/friends.lib.js';
+import * as Notification from '../lib/noti.lib.js';
+const requestURL = '/api/friends';
 
 let friendSearch = document.getElementById('friends-search');
 let friendsSearchWrapper = document.getElementById("friends-search-wrapper");
@@ -8,11 +8,11 @@ let friendsSearchWrapper = document.getElementById("friends-search-wrapper");
 friendSearch.addEventListener("change", async () => {
     let searchData = friendSearch.value;
     if(searchData === '') {
-        modal.setActiveTab(modal.friends_tabs[0]);
-        modal.setActiveTabContent(modal.friends_tabs_contents[0]);
+        friend.setActiveTab(friend.friends_tabs[0]);
+        friend.setActiveTabContent(friend.friends_tabs_contents[0]);
     }
     else {
-        modal.setActiveTabContent(modal.friends_tabs_contents[2]);
+        friend.setActiveTabContent(friend.friends_tabs_contents[2]);
         let url = `${requestURL}/search_friends`;
         let options = {
             method: "POST",
@@ -34,7 +34,7 @@ friendSearch.addEventListener("change", async () => {
                     `;
                 }
                 else {
-                    modal.renderFriendsList(friends, friendsSearchWrapper);
+                    friend.renderFriendsList(friends, friendsSearchWrapper);
                 }
             }
         }

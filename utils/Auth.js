@@ -1,15 +1,14 @@
-let config = require("../www/config");
 let jwt = require("jsonwebtoken");
-let User = require("./User");
+let User = require("../models/User");
 
 exports.authenticate = async function (req, res, next) {
-    if(req.cookies[config.auth_cookie_name] === undefined) {
+    if(req.cookies[process.env['AUTH_COOKIE_NAME']] === undefined) {
         res.redirect("/login");
     }
     else {
         try {
-            let token = req.cookies[config.auth_cookie_name];
-            let userId = (jwt.verify(token, config.token_key)).userId;
+            let token = req.cookies[process.env['AUTH_COOKIE_NAME']];
+            let userId = (jwt.verify(token, process.env['TOKEN_KEY'])).userId;
             let user = await User.findById(userId);
             if(user) {
                 // login success
@@ -28,13 +27,13 @@ exports.authenticate = async function (req, res, next) {
 }
 
 exports.isAlreadyAuth = async function (req, res, next) {
-    if(req.cookies[config.auth_cookie_name] === undefined) {
+    if(req.cookies[process.env['AUTH_COOKIE_NAME']] === undefined) {
         next();
     }
     else {
         try {
-            let token = req.cookies[config.auth_cookie_name];
-            let userId = (jwt.verify(token, config.token_key)).userId;
+            let token = req.cookies[process.env['AUTH_COOKIE_NAME']];
+            let userId = (jwt.verify(token, process.env['TOKEN_KEY'])).userId;
             let user = await User.findById(userId);
             if(user) {
                 res.redirect("/");
