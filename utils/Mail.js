@@ -29,7 +29,7 @@ const createTransporter = async () => {
         auth: {
             type: "OAuth2",
             user: process.env['GMAIL_NAME'],
-            accessToken,
+            accessToken: process.env.ACCESS_TOKEN,
             clientId: process.env.CLIENT_ID,
             clientSecret: process.env.CLIENT_SECRET,
             refreshToken: process.env.REFRESH_TOKEN
