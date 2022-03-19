@@ -1,4 +1,4 @@
-import * as Notification from './noti.model.js';
+import * as Notification from './noti.lib.js';
 const CLASS_ACTIVE_MENU = "active-menu";
 let menuTabs = document.getElementsByClassName("menu-icon");
 let activeTab = document.getElementsByClassName("menu-icon")[0];
