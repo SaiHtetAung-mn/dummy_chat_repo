@@ -1,4 +1,4 @@
-import * as Notification from './noti.model.js';
+import * as Notification from './noti.lib.js';
 import * as PopupImage from './popup-image.lib.js';
 import * as Crypto from './crypto.js';
 const reqURL = '/api/chat';
