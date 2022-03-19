@@ -1,6 +1,6 @@
 import socket from './socket.js';
-import * as Crypto from '../model/crypto.js';
-import * as Modal from './modal.model.js';
+import * as Crypto from '../lib/crypto.js';
+import * as Modal from './model.lib.js';
 import * as Notification from './noti.lib.js';
 const requestURL = '/api/friends';
 
