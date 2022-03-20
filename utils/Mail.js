@@ -59,7 +59,7 @@ const createTransporter = async () => {
 // })
 
 exports.sendMail = async (to, subject, text, html) => {
-    const GMAIL_NAME = `Chat app <${process.env['GMAIL_NAME']}>`;
+    const GMAIL_NAME = `Dummy chat <${process.env['GMAIL_NAME']}>`;
     const options = {
         from: GMAIL_NAME,
         to: to,
