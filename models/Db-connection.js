@@ -60,8 +60,8 @@ function getUserSchemaQuery() {
 
     let query = `create table if not exists "${TABLE_USER}" (
         "${COL_ID}" varchar(20) not null,
-        "${COL_NAME}" varchar(20) not null,
-        "${COL_EMAIL}" varchar(25) not null,
+        "${COL_NAME}" varchar(30) not null,
+        "${COL_EMAIL}" varchar(50) not null,
         "${COL_PASSWORD}" varchar(50) not null,
         "${COL_PROFILE_PATH}" varchar(200) default '/public/images/profile_images/user.png',
         "${COL_IS_ACTIVE}" boolean default false,
